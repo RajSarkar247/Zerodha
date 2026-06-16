@@ -71,14 +71,20 @@ The project simulates a real-world trading ecosystem with authentication, dashbo
 
 ## 🏗️ System Architecture
 Landing Page (3001)
+
         ↓
 User Login / Signup (JWT Authentication)
+
         ↓
 Backend API (3002)
+
         ↓
 Dashboard Access (3000)
+
         ↓
 Portfolio & Charts (Chart.js)
+
+
 
 - REST API communication between services
 - JWT-based authentication flow
