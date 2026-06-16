@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios";
 import CustomAlert from "../CustomAlert";
+import { useNavigate } from "react-router-dom";
 
 function Signup() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate=useNavigate();
   const [alert, setAlert] = useState({
   show: false,
   message: "",
@@ -43,12 +45,15 @@ const showAlert = (message, type) => {
       setName("");
       setEmail("");
       setPassword("");
+      setTimeout(()=>{navigate("/");},2000);
     } catch (error) {
       showAlert(error.response?.data?.message || "Signup failed", "danger");
     }
   };
 
   return (
+    <>
+    <CustomAlert show={alert.show} message={alert.message} type={alert.type}/>
     <div className="container-fluid min-vh-100 d-flex align-items-center justify-content-center bg-light">
       <div class="col-12 col-sm-8 col-md-5 col-lg-4">
         <div class="card shadow-sm border-0 p-3">
@@ -101,6 +106,7 @@ const showAlert = (message, type) => {
         </div>
       </div>
     </div>
+    </>
   );
 }
 
